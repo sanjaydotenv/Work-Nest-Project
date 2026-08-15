@@ -1,8 +1,11 @@
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import { employeeLogin } from "../state/auth/authAction";
 
 export const useAuth = () => {
   const navigate = useNavigate();
+  const dispath = useDispatch();
   const {
     register,
     handleSubmit,
@@ -16,8 +19,8 @@ export const useAuth = () => {
   };
 
   const loginSubmit = (dets) => {
-    console.log(dets)
-  }
+    dispath(employeeLogin(dets));
+  };
 
   return {
     navigate,
@@ -26,6 +29,6 @@ export const useAuth = () => {
     reset,
     errors,
     registerSubmit,
-    loginSubmit
+    loginSubmit,
   };
 };
