@@ -1,7 +1,10 @@
 import React from "react";
 import { Cloud, ArrowRightToLine } from "lucide-react";
+import { useAuth } from "../../hooks/useAuth";
 
 const Login = () => {
+  const { register, handleSubmit, errors, loginSubmit, navigate } = useAuth();
+
   return (
     <div className="h-screen w-full overflow-hidden bg-[#09070F] relative flex items-center justify-center px-3 sm:px-5">
       {/* Background Glow */}
@@ -120,7 +123,7 @@ const Login = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-4 sm:space-y-5">
+        <form onSubmit={handleSubmit(loginSubmit)} className="space-y-4 sm:space-y-5">
           {/* Email */}
           <div>
             <label
@@ -156,7 +159,13 @@ const Login = () => {
                 focus:ring-purple-500/30
                 placeholder:text-gray-500
               "
+              {...register("email", {
+                required: "Email is Required",
+              })}
             />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+            )}
           </div>
 
           {/* Password */}
@@ -207,7 +216,17 @@ const Login = () => {
                 focus:ring-purple-500/30
                 placeholder:text-gray-500
               "
+               {...register("password", {
+              required: "Password is Required",
+            })}
             />
+           
+
+            {errors.password && (
+              <p className="text-red-500 text-xs mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           {/* Checkbox */}
@@ -258,6 +277,7 @@ const Login = () => {
           <p className="text-gray-400 text-xs sm:text-sm">
             Don&apos;t have an account?{" "}
             <button
+              onClick={() => navigate("/register")}
               type="button"
               className="
                 text-purple-300

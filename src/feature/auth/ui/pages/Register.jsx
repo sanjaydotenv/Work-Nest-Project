@@ -1,7 +1,11 @@
 import React from "react";
 import { User, Mail, Lock, Sparkles, ShieldCheck } from "lucide-react";
+import { useAuth } from "../../hooks/useAuth";
 
 const Register = () => {
+  const { navigate, register, handleSubmit, errors, registerSubmit } =
+    useAuth();
+
   return (
     <div className="h-screen w-full overflow-hidden bg-[#09070F] text-white flex flex-col">
       {/* Main Section */}
@@ -86,7 +90,10 @@ const Register = () => {
             </div>
 
             {/* Form */}
-            <form className="space-y-3.5 xl:space-y-4">
+            <form
+              onSubmit={handleSubmit(registerSubmit)}
+              className="space-y-3.5 xl:space-y-4"
+            >
               {/* Full Name */}
               <div>
                 <label className="block mb-1.5 text-xs xl:text-sm font-medium text-gray-300">
@@ -120,8 +127,16 @@ const Register = () => {
                       text-white
                       placeholder:text-gray-500
                     "
+                    {...register("fullName", {
+                      required: "FullName is Required",
+                    })}
                   />
                 </div>
+                {errors.fullName && (
+                  <p className="text-red-400 text-xs mt-1">
+                    {errors.fullName.message}
+                  </p>
+                )}
               </div>
 
               {/* Email */}
@@ -157,8 +172,16 @@ const Register = () => {
                       text-white
                       placeholder:text-gray-500
                     "
+                    {...register("email", {
+                      required: "Email is Required",
+                    })}
                   />
                 </div>
+                {errors.email && (
+                  <p className="text-red-400 text-xs mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
 
               {/* Password */}
@@ -194,8 +217,16 @@ const Register = () => {
                       text-white
                       placeholder:text-gray-500
                     "
+                    {...register("password", {
+                      required: "Password is Required",
+                    })}
                   />
                 </div>
+                {errors.password && (
+                  <p className="text-red-400 text-xs mt-1">
+                    {errors.password.message}
+                  </p>
+                )}
 
                 {/* Password Strength */}
                 <div className="flex gap-1.5 mt-2">
@@ -221,6 +252,9 @@ const Register = () => {
                     accent-purple-500
                     shrink-0
                   "
+                  {...register("term", {
+                    required: "Term is Required",
+                  })}
                 />
 
                 <span className="text-gray-400 text-xs leading-relaxed">
@@ -317,6 +351,7 @@ const Register = () => {
               <p className="text-center text-gray-400 pt-2 text-xs xl:text-sm">
                 Already have an account?{" "}
                 <button
+                  onClick={() => navigate("/")}
                   type="button"
                   className="
                     text-purple-300
