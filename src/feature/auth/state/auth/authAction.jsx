@@ -19,10 +19,9 @@ export const loggedInEmployee = createAsyncThunk(
   "/auth/me",
   async (credential, thunkAPi) => {
     try {
-      console.log("chala hai")
       const res = await axiosInstnace.get("/auth/me", credential);
-      console.log(res)
-      return res
+      console.log(res);
+      return res;
     } catch (error) {
       return thunkAPi.rejectWithValue(error);
     }

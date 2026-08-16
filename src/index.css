@@ -1,1 +1,121 @@
 @import "tailwindcss";
+
+:root {
+  /* Background */
+  --background: #fcf8ff;
+
+  /* Surfaces */
+  --surface: #fcf8ff;
+  --surface-dim: #dbd8e4;
+  --surface-bright: #fcf8ff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f5f2fe;
+  --surface-container: #efecf8;
+  --surface-container-high: #e9e6f3;
+  --surface-container-highest: #e4e1ed;
+
+  /* Text */
+  --text: #1b1b23;
+  --text-muted: #464554;
+
+  /* Primary */
+  --primary: #4648d4;
+  --on-primary: #ffffff;
+  --primary-container: #6063ee;
+  --on-primary-container: #fffbff;
+
+  /* Secondary */
+  --secondary: #505f76;
+  --on-secondary: #ffffff;
+  --secondary-container: #d0e1fb;
+  --on-secondary-container: #54647a;
+
+  /* Tertiary */
+  --tertiary: #904900;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #b55d00;
+  --on-tertiary-container: #fffbff;
+
+  /* Borders */
+  --border: #767586;
+  --border-subtle: #c7c4d7;
+
+  /* Error */
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+
+  /* Inverse */
+  --inverse-surface: #303038;
+  --inverse-text: #f2effb;
+
+  /* Fixed */
+  --primary-fixed: #e1e0ff;
+  --primary-fixed-dim: #c0c1ff;
+}
+
+/* =========================
+   DARK THEME
+========================= */
+
+.dark {
+  /* Background */
+  --background: #141218;
+
+  /* Surfaces */
+  --surface: #141218;
+  --surface-dim: #141218;
+  --surface-bright: #3b383e;
+  --surface-container-lowest: #0f0d13;
+  --surface-container-low: #1d1b20;
+  --surface-container: #211f24;
+  --surface-container-high: #2b292f;
+  --surface-container-highest: #36343a;
+
+  /* Text */
+  --text: #e6e0e9;
+  --text-muted: #cbc4d2;
+
+  /* Primary */
+  --primary: #cfbcff;
+  --on-primary: #381e72;
+  --primary-container: #6750a4;
+  --on-primary-container: #e0d2ff;
+
+  /* Secondary */
+  --secondary: #cdc0e9;
+  --on-secondary: #342b4b;
+  --secondary-container: #4d4465;
+  --on-secondary-container: #bfb2da;
+
+  /* Tertiary */
+  --tertiary: #e7c365;
+  --on-tertiary: #3e2e00;
+  --tertiary-container: #c9a74d;
+  --on-tertiary-container: #503d00;
+
+  /* Borders */
+  --border: #948e9c;
+  --border-subtle: #494551;
+
+  /* Error */
+  --error: #ffb4ab;
+  --on-error: #690005;
+  --error-container: #93000a;
+  --on-error-container: #ffdad6;
+
+  /* Inverse */
+  --inverse-surface: #e6e0e9;
+  --inverse-text: #322f35;
+
+  /* Fixed */
+  --primary-fixed: #e9ddff;
+  --primary-fixed-dim: #cfbcff;
+}
+
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}

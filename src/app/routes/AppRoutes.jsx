@@ -7,13 +7,14 @@ import Register from "../../feature/auth/ui/pages/Register";
 import Home from "../../feature/dashboard/ui/pages/Home";
 import { useDispatch } from "react-redux";
 import { loggedInEmployee } from "../../feature/auth/state/auth/authAction";
+import PublicRoute from "./protectedRoutes/PublicRoute";
+import PrivateRoute from "./protectedRoutes/PrivateRoute";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     (() => {
-      console.log("useEffect");
       dispatch(loggedInEmployee());
     })();
   }, []);
@@ -21,25 +22,37 @@ const AppRoutes = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <AuthLayout />,
+      element: <PublicRoute />,
       children: [
         {
           path: "",
-          element: <Login />,
-        },
-        {
-          path: "register",
-          element: <Register />,
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "",
+              element: <Login />,
+            },
+            {
+              path: "register",
+              element: <Register />,
+            },
+          ],
         },
       ],
     },
     {
       path: "/dashboard/home",
-      element: <MainLayout />,
+      element: <PrivateRoute />,
       children: [
         {
           path: "",
-          element: <Home />,
+          element: <MainLayout />,
+          children: [
+            {
+              path: "",
+              element: <Home />,
+            },
+          ],
         },
       ],
     },
