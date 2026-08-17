@@ -7,7 +7,7 @@ const PublicRoute = () => {
 
   if (auth.isLoading) return <h1>Loading...</h1>;
 
-  if (auth.employee) return <Navigate to={"/dashboard/home"} />;
+  if (auth.employee) return <Navigate to={"/home"} />;
 
   return <Outlet />;
 };
