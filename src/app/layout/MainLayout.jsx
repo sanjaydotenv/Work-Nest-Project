@@ -17,13 +17,15 @@ const mainLayout = () => {
   }, [mode]);
 
   return (
-    <div className="flex bg-[var(--surface-container)]]">
+    <div className="flex h-screen overflow-hidden bg-[var(--background)]">
       <AsideNav />
-      <div>
+
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
         <Navbar />
-        <div>
+
+        <main className="min-h-0 overflow-y-auto ">
           <Outlet />
-        </div>
+        </main>
       </div>
     </div>
   );

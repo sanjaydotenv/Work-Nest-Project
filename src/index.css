@@ -118,4 +118,5 @@
 body {
     background-color: var(--background);
     color: var(--text);
+    transition: 0.5s ease
 }

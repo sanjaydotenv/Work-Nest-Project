@@ -1,9 +1,10 @@
 import React from 'react'
+import EmployeeForm from './EmployeeForm'
 
 const AddEmployee = () => {
   return (
-    <div>
-      this is add employee
+    <div className='flex items-center justify-center'>
+      <EmployeeForm />
     </div>
   )
 }

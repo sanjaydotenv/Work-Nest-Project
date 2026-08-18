@@ -1,15 +1,42 @@
-import { Building, Table } from "lucide-react";
+import {
+  Building,
+  FileSpreadsheet,
+  FileText,
+  LayoutDashboard,
+  Megaphone,
+  MessageSquareMore,
+  Settings,
+  Table,
+  UserPen,
+  UserRoundPlus,
+  Workflow,
+} from "lucide-react";
 
 export const adminNavigation = [
   {
     title: "Dashboard",
-    Icon: <Building />,
+    Icon: <LayoutDashboard />,
     path: "/home",
   },
   {
+    title: "Chats",
+    Icon: <MessageSquareMore />,
+    path: "/home/chats",
+  },
+  {
     title: "Tasks",
-    Icon: <Table />,
+    Icon: <FileSpreadsheet />,
     path: "/home/tasks",
+  },
+  {
+    title: "Employee",
+    Icon: <Workflow />,
+    path: "/home/employee",
+  },
+  {
+    title: "Add Employee",
+    Icon: <UserRoundPlus />,
+    path: "/home/add-employee",
   },
   {
     title: "Department",
@@ -18,40 +45,35 @@ export const adminNavigation = [
   },
   {
     title: "Document",
-    Icon: <Building />,
+    Icon: <FileText />,
     path: "/home/document",
-  },
-  {
-    title: "Add Employee",
-    Icon: <Building />,
-    path: "/home/add-employee",
   },
 ];
 
 export const employeeNavigation = [
-    {
+  {
     title: "Dashboard",
     Icon: <Building />,
     path: "/home",
   },
   {
     title: "My Task",
-    Icon: <Table />,
+    Icon: <FileSpreadsheet />,
     path: "/home/myTask",
   },
   {
     title: "Attendance",
-    Icon: <Building />,
+    Icon: <Megaphone />,
     path: "/home/attendance",
   },
   {
     title: "Profile",
-    Icon: <Building />,
+    Icon: <UserPen />,
     path: "/home/profile",
   },
   {
     title: "Settings",
-    Icon: <Building />,
+    Icon: <Settings />,
     path: "/home/setting",
   },
-]
+];

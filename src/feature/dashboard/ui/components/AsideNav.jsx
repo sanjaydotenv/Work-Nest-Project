@@ -10,19 +10,24 @@ import NavigationTab from "./NavigationTab";
 
 const AsideNav = () => {
   const { employee } = useSelector((state) => state.auth);
-
   const navigation =
-    employee.data.user.role === "admin" ?adminNavigation:  employeeNavigation ;
+    employee?.data?.user?.role === "admin" ? adminNavigation : employeeNavigation;
 
   return (
     <div>
       <div className="bg-[var(--surface-bright)] h-screen w-50 p-4">
-        <h1 className="text-xl ]">Work-Nest</h1>
-        <p>EnterPrice Workspace</p>
+        <h1 className="text-2xl text-[#6868d7] font-bold">Work-Nest</h1>
+        <p className="text-xs">EnterPrice Workspace</p>
 
         <div className="flex gap-10 py-10 flex-col">
           {navigation.map((routes) => {
-            return <NavigationTab path={routes.path} title={routes.title} icon={routes.Icon} />
+            return (
+              <NavigationTab
+                path={routes.path}
+                title={routes.title}
+                icon={routes.Icon}
+              />
+            );
           })}
         </div>
       </div>
