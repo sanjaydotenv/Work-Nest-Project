@@ -7,11 +7,10 @@ import EmployeeToolbar from "../components/Employee/EmployeeToolbar";
 import EmployeeSkeloton from "../components/Employee/EmployeeSkeleton";
 
 const Employee = () => {
-  const { data, isPending } = useEmployee();
+  const { data, isPending , handlePage } = useEmployee();
 
   if (isPending) return <EmployeeSkeloton />;
 
-  console.log(data);
 
   return (
     <main className="min-h-screen bg-[var(--background)] p-6 text-[var(--text)]">
@@ -23,7 +22,7 @@ const Employee = () => {
         <section className="overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-container-lowest)]">
           <EmployeeToolbar />
           <EmployeeTable data={data} />
-          <EmployeePagination />
+          <EmployeePagination pagination={data.pagination} handlePage={handlePage} />
         </section>
       </div>
     </main>
