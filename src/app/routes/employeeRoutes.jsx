@@ -5,15 +5,15 @@ import Setting from "../../feature/settings/ui/pages/Setting";
 
 export const employeeRoutes = [
   {
-    path: "/home/myTask",
+    path: "myTask",
     element: <MyTask />,
   },
   {
-    path: "/home/attendance",
+    path: "attendance",
     element: <Attendance />,
   },
   {
-    path: "/home/profile",
+    path: "profile",
     element: <Profile />,
   },
 ];

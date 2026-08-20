@@ -7,7 +7,7 @@ import EmployeeToolbar from "../components/Employee/EmployeeToolbar";
 import EmployeeSkeloton from "../components/Employee/EmployeeSkeleton";
 
 const Employee = () => {
-  const { data, isPending , handlePage } = useEmployee();
+  const { data, isPending , handlePage , handleSearchFilters , setFilter , departments } = useEmployee();
 
   if (isPending) return <EmployeeSkeloton />;
 
@@ -20,7 +20,7 @@ const Employee = () => {
         <EmployeeStats data={data} />
 
         <section className="overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--surface-container-lowest)]">
-          <EmployeeToolbar />
+          <EmployeeToolbar handleSearchFilters={handleSearchFilters} setFilter={setFilter} />
           <EmployeeTable data={data} />
           <EmployeePagination pagination={data.pagination} handlePage={handlePage} />
         </section>

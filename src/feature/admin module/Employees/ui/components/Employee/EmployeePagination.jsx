@@ -1,7 +1,6 @@
 const EmployeePagination = ({ pagination, handlePage }) => {
   const { total, limit, page, totalpages } = pagination;
 
-  console.log(pagination);
 
   let start = (page - 1) * limit + 1;
   let end = Math.min(page * limit, total);
@@ -18,7 +17,6 @@ const EmployeePagination = ({ pagination, handlePage }) => {
     pages = [page - 1, page, page + 1];
   }
 
-  console.log(pages);
 
   return (
     <div

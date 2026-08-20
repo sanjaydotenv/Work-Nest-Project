@@ -1,4 +1,4 @@
-const EmployeeToolbar = () => {
+const EmployeeToolbar = ({ handleSearchFilters }) => {
   return (
     <div
       className="
@@ -23,6 +23,7 @@ const EmployeeToolbar = () => {
         </span>
 
         <input
+          onInput={(e) => handleSearchFilters("search", e.target.value)}
           type="text"
           placeholder="Search employees..."
           className="
@@ -46,6 +47,7 @@ const EmployeeToolbar = () => {
       {/* Filters */}
       <div className="flex flex-wrap gap-3">
         <select
+          onChange={(e) => handleSearchFilters("departments", e.target.value)}
           className="
             rounded-xl
             border border-[var(--border-subtle)]
@@ -58,13 +60,15 @@ const EmployeeToolbar = () => {
           "
         >
           <option>All Departments</option>
-          <option>Engineering</option>
-          <option>Design</option>
-          <option>Marketing</option>
-          <option>HR</option>
+          <option>developer</option>
+          <option>management</option>
+          <option>common</option>
+          <option>administrative</option>
+          <option>hr</option>
         </select>
 
         <select
+          onChange={(e) => handleSearchFilters("status", e.target.value)}
           className="
             rounded-xl
             border border-[var(--border-subtle)]
@@ -77,8 +81,26 @@ const EmployeeToolbar = () => {
           "
         >
           <option>All Status</option>
-          <option>Active</option>
-          <option>Inactive</option>
+          <option>active</option>
+          <option>inactive</option>
+        </select>
+
+        <select
+          onChange={(e) => handleSearchFilters("role", e.target.value)}
+          className="
+            rounded-xl
+            border border-[var(--border-subtle)]
+            bg-[var(--surface-container-lowest)]
+            px-4 py-3
+            text-sm
+            text-[var(--text)]
+            outline-none
+            focus:border-[var(--primary)]
+          "
+        >
+          <option>Role</option>
+          <option>admin</option>
+          <option>employee</option>
         </select>
       </div>
     </div>
