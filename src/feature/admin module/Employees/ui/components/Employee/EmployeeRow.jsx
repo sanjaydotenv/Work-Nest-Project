@@ -83,7 +83,7 @@ const EmployeeRow = ({ employee }) => {
           <span
             className={`
               h-1.5 w-1.5 rounded-full
-              ${isActive ? "bg-[var(--primary)]" : "bg-[var(--border)]"}
+              ${employee.status === "active" ? "bg-green-700" : "bg-red-800"}
             `}
           />
 
@@ -94,6 +94,19 @@ const EmployeeRow = ({ employee }) => {
       {/* Actions */}
       <td className="px-6 py-4">
         <div className="flex justify-end gap-2">
+          <button
+            className={`
+              rounded-lg
+              px-3 py-2
+              text-sm
+              text-[var(--text-muted)]
+              transition
+              ${employee.status === "active" ? "hover:bg-red-800" : "hover:bg-green-600"}
+              hover:text-[var(--text)]
+            `}
+          >
+            {employee.status === "active" ? "Inactive" : "Active"}
+          </button>
           <button
             className="
               rounded-lg

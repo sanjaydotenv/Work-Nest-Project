@@ -18,7 +18,7 @@ const Navbar = () => {
           placeholder="Search workspace.."
         />
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 hover:cursor-pointer">
         {mode === "dark" ? (
           <div>
             <Sun onClick={() => dispath(toggleTheme())} />

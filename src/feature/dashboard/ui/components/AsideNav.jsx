@@ -22,7 +22,7 @@ const AsideNav = () => {
         <div className="flex gap-10 py-10 flex-col">
           {navigation.map((routes) => {
             return (
-              <NavigationTab
+              <NavigationTab key={routes.title}
                 path={routes.path}
                 title={routes.title}
                 icon={routes.Icon}

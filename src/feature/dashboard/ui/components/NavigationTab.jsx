@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router";
 
 const NavigationTab = ({ path, title, icon }) => {
-  console.log(title, path, icon);
 
   return (
     <div>

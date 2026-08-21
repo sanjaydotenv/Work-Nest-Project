@@ -1,4 +1,5 @@
 const EmployeeStats = ({ data }) => {
+
   const stats = [
     {
       title: "Total Employees",
@@ -44,7 +45,6 @@ const EmployeeStats = ({ data }) => {
 
           <div className="mt-3 flex items-end justify-between">
             <h2 className="text-3xl font-bold">{stat.value}</h2>
-
             <div
               className="
                 flex h-10 w-10 items-center justify-center

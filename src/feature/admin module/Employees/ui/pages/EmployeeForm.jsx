@@ -1,26 +1,12 @@
 import React from "react";
+import { useEmployee } from "../../hooks/useEmployee";
 
-const EmployeeForm = ({ employee = {}, onSubmit }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      department: formData.get("department"),
-      role: formData.get("role"),
-      status: formData.get("status"),
-      avatar: formData.get("avatar"),
-    };
-
-    onSubmit?.(data);
-  };
+const EmployeeForm = () => {
+  const { register, handleAddEmployee, handleSubmit, errors } = useEmployee();
 
   return (
     <form
-      onSubmit={handleSubmit}
+    onSubmit={handleSubmit(handleAddEmployee)}
       className="
         w-[100vw] max-w-7xl
         rounded-2xl
@@ -42,7 +28,6 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
       </div>
 
       <div className="space-y-6">
-
         {/* Avatar */}
         <div>
           <label className="mb-2 block text-sm font-medium text-[var(--text)]">
@@ -50,10 +35,9 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
           </label>
 
           <input
-            type="text"
+            {...register("avatar")}
+            type="file"
             name="avatar"
-            defaultValue={employee.avatar || ""}
-            placeholder="https://example.com/avatar.jpg"
             className="
               w-full
               rounded-xl
@@ -73,18 +57,18 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
 
         {/* Name + Email */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-
           <div>
             <label className="mb-2 block text-sm font-medium text-[var(--text)]">
               Full Name
             </label>
 
             <input
+              {...register("name", {
+                required: "Full Name is required",
+              })}
               type="text"
               name="name"
-              defaultValue={employee.name || ""}
               placeholder="Enter employee name"
-              required
               className="
                 w-full
                 rounded-xl
@@ -108,11 +92,12 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
             </label>
 
             <input
+              {...register("email", {
+                required: "Email Address is required",
+              })}
               type="email"
               name="email"
-              defaultValue={employee.email || ""}
               placeholder="employee@example.com"
-              required
               className="
                 w-full
                 rounded-xl
@@ -129,21 +114,20 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
               "
             />
           </div>
-
         </div>
 
         {/* Department + Role */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-
           <div>
             <label className="mb-2 block text-sm font-medium text-[var(--text)]">
               Department
             </label>
 
             <select
+              {...register("department", {
+                required: "department is required",
+              })}
               name="department"
-              defaultValue={employee.department || ""}
-              required
               className="
                 w-full
                 rounded-xl
@@ -157,29 +141,20 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
                 focus:border-[var(--primary)]
               "
             >
+              
               <option value="" disabled>
                 Select department
               </option>
 
-              <option value="developer">
-                Developer
-              </option>
+              <option value="developer">Developer</option>
 
-              <option value="design">
-                Design
-              </option>
+              <option value="design">Design</option>
 
-              <option value="marketing">
-                Marketing
-              </option>
+              <option value="marketing">Marketing</option>
 
-              <option value="hr">
-                HR
-              </option>
+              <option value="hr">HR</option>
 
-              <option value="finance">
-                Finance
-              </option>
+              <option value="finance">Finance</option>
             </select>
           </div>
 
@@ -189,9 +164,8 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
             </label>
 
             <select
+            {...register("role")}
               name="role"
-              defaultValue={employee.role || ""}
-              required
               className="
                 w-full
                 rounded-xl
@@ -205,24 +179,18 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
                 focus:border-[var(--primary)]
               "
             >
+              
               <option value="" disabled>
                 Select role
               </option>
 
-              <option value="admin">
-                Admin
-              </option>
+              <option value="admin">Admin</option>
 
-              <option value="employee">
-                Employee
-              </option>
+              <option value="employee">Employee</option>
 
-              <option value="manager">
-                Manager
-              </option>
+              <option value="manager">Manager</option>
             </select>
           </div>
-
         </div>
 
         {/* Status */}
@@ -232,7 +200,6 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
           </label>
 
           <div className="flex gap-3">
-
             <label
               className="
                 flex cursor-pointer
@@ -246,19 +213,14 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
               "
             >
               <input
+              {...register("status")}
                 type="radio"
                 name="status"
                 value="active"
-                defaultChecked={
-                  employee.status === "active" ||
-                  !employee.status
-                }
                 className="accent-[var(--primary)]"
               />
 
-              <span className="text-sm text-[var(--text)]">
-                Active
-              </span>
+              <span className="text-sm text-[var(--text)]">Active</span>
             </label>
 
             <label
@@ -274,21 +236,17 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
               "
             >
               <input
+              {...register("status")}
                 type="radio"
                 name="status"
                 value="inactive"
-                defaultChecked={employee.status === "inactive"}
                 className="accent-[var(--primary)]"
               />
 
-              <span className="text-sm text-[var(--text)]">
-                Inactive
-              </span>
+              <span className="text-sm text-[var(--text)]">Inactive</span>
             </label>
-
           </div>
         </div>
-
       </div>
 
       {/* Footer */}
@@ -300,7 +258,6 @@ const EmployeeForm = ({ employee = {}, onSubmit }) => {
           pt-6
         "
       >
-
         <button
           type="submit"
           className="
