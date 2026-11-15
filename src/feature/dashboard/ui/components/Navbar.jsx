@@ -2,6 +2,8 @@ import { Bell, Bluetooth, Menu, Moon, Search, Sun } from "lucide-react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../../../shared/state/themeSlice";
+import { removeEmployee } from "../../../auth/state/auth/authSlice";
+import { logoutAPI } from "../../api/authAPI";
 
 const Navbar = () => {
   const { mode } = useSelector((state) => state.theme);
@@ -30,6 +32,10 @@ const Navbar = () => {
         )}
         <Bell size={23} />
         <Menu size={23} />
+        <button onClick={() => {
+          dispath(removeEmployee())
+          logoutAPI()
+        }} className="bg-[var(--background)] border border-[var(--border)] px-3 rounded-lg ">Logout</button>
       </div>
     </div>
   );
